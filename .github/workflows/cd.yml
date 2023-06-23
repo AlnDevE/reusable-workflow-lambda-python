@@ -1,0 +1,37 @@
+name: Workflow reutilizável Deploy na aws teste
+
+on:
+  workflow_call:
+    inputs:
+      runs-on:
+        required: false
+        type: string
+        default: ubuntu-latest
+    secrets:
+        ACCESS_KEY: 
+            required: true
+        SECRET_KEY:
+            required: true
+
+jobs:
+  deploy-lambda:
+    name: deploy
+    runs-on: ${{inputs.runs-on}}
+    steps:
+        - name: Python Config
+          uses: actions/setup-python@v3
+          with:
+            python-version: 3.8
+        - name: AWS Config
+          uses: aws-actions/configure-aws-credentials@v1
+          with:
+            aws-access-key-id: ${{secrets.ACCESS_KEY}}
+            aws-secret-access-key: ${{secrets.ACCESS_KEY}}
+            aws-region: 'us-east-1'
+        - name: print dos inputs teste
+          run: echo ${{secrets.ACCESS_KEY}}
+        - name: Teste cli
+          run: aws list-functions
+        
+        
+         
