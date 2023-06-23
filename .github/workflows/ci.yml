@@ -1,0 +1,27 @@
+name: Workflow reutilizável Teste
+
+on:
+  workflow_call:
+    inputs:
+      runs-on:
+        required: false
+        type: string
+        default: ubuntu-latest
+
+jobs:
+  python-test:
+    name: Teste
+    runs-on: ${{inputs.runs-on}}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup de pytohn
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+      
+      - name: Installing Dependencies
+        run: pip install -r .app/requirements.txt 
+
+      - name: Run test
+        run: python -m pytest ./app
