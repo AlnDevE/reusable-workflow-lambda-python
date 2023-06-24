@@ -25,3 +25,20 @@ jobs:
 
       - name: Run test
         run: python -m pytest ./app
+
+  python-lint:
+    name: Lint do código
+    runs-on: ${{inputs.runs-on}}
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup de pytohn
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+
+      - name: Setup Lint
+        run: pip install flake8
+      
+      - name: Run lint
+        run: python -m flake8 ./app
