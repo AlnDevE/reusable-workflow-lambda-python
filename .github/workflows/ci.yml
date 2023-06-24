@@ -27,6 +27,7 @@ jobs:
         run: python -m pytest ./app
 
   python-lint:
+    needs: python-test
     name: Lint do código
     runs-on: ${{inputs.runs-on}}
     steps:
