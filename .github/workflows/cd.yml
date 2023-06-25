@@ -29,8 +29,6 @@ jobs:
         with:
           python-version: 3.8
       
-      - uses: sigstore/gh-action-sigstore-python@v1.2.3
-      
       - name: Install dependencies
         run: pip install --target . -r ./app/requirements.txt --upgrade --no-user   
 
