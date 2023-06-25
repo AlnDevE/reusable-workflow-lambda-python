@@ -23,7 +23,7 @@ jobs:
           with:
             python-version: 3.8
         - name: Copy
-          run: cp . lambda
+          run: cp -R . /lambda
         - name: Install dependencies
           run: pip install --target ./lambda -r ./app/requirements.txt --upgrade --no-user
         - name: Zip files
