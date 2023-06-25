@@ -30,7 +30,9 @@ jobs:
           python-version: 3.8
       
       - name: Install dependencies
-        run: pip install --target . -r ./app/requirements.txt --upgrade --no-user   
+        run: |
+          pip install --target . -r ./app/requirements.txt --upgrade --no-user
+          mv app/lambda_function.py . 
 
       - name: Install AWS CLI
         run: |
