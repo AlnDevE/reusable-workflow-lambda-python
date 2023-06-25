@@ -20,9 +20,6 @@ jobs:
   deploy-lambda:
     name: Deploy da lambda
     runs-on: ${{inputs.runs-on}}
-    permissions:
-      id-token: write
-      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
